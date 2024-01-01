@@ -1,0 +1,282 @@
+<MyScreenManager>:
+
+    Welcome:
+        name:"hi"
+    WDYO:
+        name:"what_uw"
+    InsertData:
+        name:"insert_data"
+    Inquri:
+        name:"inquri_data"
+
+    SuccessScreen:
+        name:"success"
+    #DataTableLayout:
+        #name:"alldata"
+
+<Welcome>:
+    Image:
+        source:"bonian.png"
+        pos_hint:{"center_x":.5,"center_y":.8}
+
+    MDLabel:
+        text:"EL-BONIAN EL-ARABY"
+        halign:'center'
+        theme_text_color: 'Custom'
+        text_color:200/255,0,0,200/255
+        font_style:'H4'
+    MDRectangleFlatIconButton:
+        icon:'bonian.png'
+        text:'continue'
+        user_font_size:'100sp'
+        pos_hint:{'center_x':.5,'center_y':.3}
+        #md_bg_color:app.theme_cls.primary_color
+        on_release:
+            root.manager.current="what_uw"
+            root.manager.transition.direction='left'
+
+<WDYO>:
+    Image:
+        source:"pump.png"
+        pos_hint:{"center_x":.5,"center_y":.8}
+
+    MDLabel:
+        text:"EL-BONIAN EL-ARABY \n What do you want ?"
+        halign:'center'
+        theme_text_color: 'Custom'
+        text_color:200/255,0,0,200/255
+        font_style:'H5'
+    MDRectangleFlatIconButton:
+        icon:'logo3.jpeg'
+        text:'Record Customer Bon'
+        user_font_size:'100sp'
+        pos_hint:{'center_x':.5,'center_y':.3}
+        #md_bg_color:app.theme_cls.primary_color
+        on_release:
+            root.manager.current="insert_data"
+            root.manager.transition.direction='left'
+    MDRectangleFlatIconButton:
+        icon:'logo3.jpeg'
+        text:'Inquiry Customer Bon'
+        user_font_size:'100sp'
+        pos_hint:{'center_x':.5,'center_y':.2}
+        #md_bg_color:app.theme_cls.primary_color
+        on_release:
+            root.manager.current="inquri_data"
+            root.manager.transition.direction='left'
+
+    MDRectangleFlatIconButton:
+        icon:'bonian.png'
+        text:'BACK'
+        user_font_size:'100sp'
+        pos_hint:{'center_x':.5,'center_y':.1}
+        #md_bg_color:app.theme_cls.primary_color
+        on_release:
+            root.manager.current="hi"
+            root.manager.transition.direction='left'
+<InsertData>:
+
+    BoxLayout:
+        orientation:"vertical"
+        Image:
+            source:"record.png"
+        TextInput:
+            id:bn_number
+            hint_text:"Bon NUmber"
+
+
+        Spinner:
+            id:spinner_id1
+            text:"Location"
+            background_color:205/255,92/255,92/255,1
+            values:['MEGWRAT123','bashyer 9','bashyer 8','bashyer 7','bashyer 6','1000 FADAN',]
+            on_text:app.spinner_clicked(spinner_id1)
+        TextInput:
+            id:BL_NUM
+            hint_text:"BLOCK NUmber"
+        Spinner:
+            id:spinner_id2
+            text:"Structure"
+            background_color:190/255,80/255,80/255,1
+            values:['khawzeeq','A3MEDA','SHOKHSHEKHA','LEBSHA','SAQF','3ADYA','DAKA','DEFRA']
+            on_text:app.spinner_clicked(spinner_id2)
+
+        TextInput:
+            id:qu_id
+            multiline:"False"
+            hint_text:"Quantity"
+
+        Spinner:
+            id:spinner_id3
+            text:"Content"
+            background_color:205/255,92/255,92/255,1
+            values:['400','350','250','500','450','200']
+            on_text:app.spinner_clicked(spinner_id3)
+
+        Spinner:
+            id:spinner_id4
+            text:"Operator"
+            values:['FARAHAT','ESALM','OPERATOR1','OPERATOR2','OPERATOR3']
+            background_color:205/255,92/255,92/255,1
+            on_text:app.spinner_clicked(spinner_id4)
+
+        Spinner:
+            id:spinner_id5
+            text:"DRIVER"
+            values:['M-3ABD EL-MO3Z"BONIAN"','AMR-ELFIQY"BONIAN"','RAMADAN"BONIAN"','REDA-EZZAT"BONIAN"','F-SOBHY"BONIAN"','M-MEDAHT"BONIAN"','M.SALAH"SUPPLIER"','A.GENEDY"SUPPLIER"','3ABD-EL-SAMAD"SUPPLIER"']
+            background_color:205/255,92/255,92/255,1
+            on_text:app.spinner_clicked(spinner_id5)
+
+        Spinner:
+            id:spinner_id6
+            text:"TRUCK"
+            md_bg_color:[5,2,9,1]
+            values:["5238","5239","5241","5242","1596","1742","1111","2222","3333"]
+            background_color:205/255,92/255,92/255,1
+            on_text:app.spinner_clicked(spinner_id6)
+        Spinner:
+            id:spinner_id7
+            text:"PUMP"
+            values:['MEZRAB','BONIAN 52','BONIAN 42','PUMP GM','PUMP NASCO','PUMP BYRAMIDS','PUMP BLUE','BUMP MAKA','PUMP GOLD','RENT 1','RENT 2','RENT 2']
+            background_color:205/255,92/255,92/255,1
+            on_text:app.spinner_clicked(spinner_id7)
+        Spinner:
+            id:spinner_id8
+            text:"Execution"
+            values:['A.ZAKRIAA','M.SALAH','FARAHAT','ESALM','ENG HOSSAM','GAMIEL BASHA','OTHER']
+            background_color:205/255,92/255,92/255,1
+            on_text:app.spinner_clicked(spinner_id8)
+
+        MDRectangleFlatIconButton:
+            text:"INSERT"
+            background_color:100/255,180/255,92/255,1
+            icon:'bonian.png'
+            md_bg_color:[5,2,9,1]
+            pos_hint:{'center_x':.5,'center_y':.8}
+            on_press:root.insert_data()
+
+
+        MDRectangleFlatIconButton:
+            text:"BACK"
+            icon:'bonian.png'
+            background_color:100/255,180/255,92/255,1
+            md_bg_color:[5,2,9,1]
+            pos_hint:{'center_x':.5,'center_y':.8}
+            on_release:
+                root.manager.current='hi'
+                root.manager.transition.direction='right'
+
+<Inquri>:
+    Image:
+        source:"em1.png"
+        pos_hint:{"center_x":.5,"center_y":.8}
+
+    MDRectangleFlatIconButton:
+        text:"INQURI total quantity"
+        icon:'bonian.png'
+        background_color:100/255,180/255,92/255,1
+        md_bg_color:[5,2,9,1]
+        pos_hint:{'center_x':.5,'center_y':.5}
+
+        on_release:
+            root.manager.current='success'
+            root.manager.transition.direction='right'
+
+
+   # MDRectangleFlatIconButton:
+        #text:"Show all BON"
+        #icon:'bonian.png'
+        #background_color:100/255,180/255,92/255,1
+        #md_bg_color:[5,2,9,1]
+       # pos_hint:{'center_x':.5,'center_y':.5}
+        #on_release:
+            #root.manager.current='alldata'
+            #root.manager.transition.direction='right'
+
+
+<SuccessScreen>:
+    Image:
+        source:"result.png"
+        pos_hint:{"center_x":.5,"center_y":.8}
+
+    MDLabel:
+        text:"search result here......"
+        id:sea
+        pos_hint:{"center_x":.5,"center_y":.6}
+        halign:'center'
+        theme_text_color: 'Custom'
+        text_color:200/255,0,0,200/255
+        #font_style:'H6'
+    MDLabel:
+        text:"search result here......"
+        id:sea2
+        pos_hint:{"center_x":.5,"center_y":.5}
+        halign:'center'
+        theme_text_color: 'Custom'
+        text_color:200/255,0,0,200/255
+        #font_style:'H6'
+    MDLabel:
+        text:"search result here......"
+        id:sea3
+        pos_hint:{"center_x":.5,"center_y":.4}
+        halign:'center'
+        theme_text_color: 'Custom'
+        text_color:200/255,0,0,200/255
+        #font_style:'H7'
+    MDLabel:
+        text:"search result here......"
+        id:sea4
+        pos_hint:{"center_x":.5,"center_y":.3}
+        halign:'center'
+        theme_text_color: 'Custom'
+        text_color:200/255,0,0,200/255
+        #font_style:'H7'
+    MDRectangleFlatIconButton:
+        text:"DISPLAY"
+        background_color:100/255,180/255,92/255,1
+        icon:'bonian.png'
+        md_bg_color:[5,2,9,1]
+        pos_hint:{'center_x':.5,'center_y':.2}
+        on_press:root.total(),root.total400(),root.total350(),root.total250()
+
+
+    MDRectangleFlatIconButton:
+        icon:'logo3.jpeg'
+        text:'Back'
+        user_font_size:'100sp'
+        pos_hint:{'center_x':.5,'center_y':.1}
+        #md_bg_color:app.theme_cls.primary_color
+        on_release:
+            root.manager.current="hi"
+            root.manager.transition.direction='left'
+
+#<DataTableLayout>:
+
+   #MDRaisedButton:
+        #id=date
+        #text:"choose date"
+        #pos_hint:{"center_x":.5,"center_y":.4}
+        #on_release:root.date_pick()
+
+
+
+    #MDLabel:
+        #text:"search result here......"
+        #id:sew
+        #pos_hint:{"center_x":.5,"center_y":.5}
+        #halign:'center'
+        #theme_text_color: 'Custom'
+        #text_color:200/255,0,0,200/255
+        #font_style:'H6'
+
+
+
+
+
+    #MDRectangleFlatIconButton:
+        #icon:'logo3.jpeg'
+        #text:'Back'
+       # user_font_size:'100sp'
+        #pos_hint:{'center_x':.5,'center_y':.1}
+        #md_bg_color:app.theme_cls.primary_color
+       # on_press:root.fetch_last_bon()
